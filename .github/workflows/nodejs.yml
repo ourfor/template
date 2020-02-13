@@ -10,6 +10,9 @@ jobs:
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x]
+    env:
+      RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
+
 
     steps:
     - uses: actions/checkout@v1
@@ -25,11 +28,8 @@ jobs:
         tar -zcvf $RELEASE_NAME.tar.gz ./dist/*
       env:
         CI: true
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
 
     - uses: actions/upload-artifact@v1
       with:
-        name: $RELEASE_NAME
-        path: client/$RELEASE_NAME.tar.gz
-      env: 
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
+        name: ${{ RELEASE_NAME }}
+        path: "client/${{ RELEASE_NAME }}.tar.gz"

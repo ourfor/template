@@ -8,6 +8,8 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]    
+    env:
+      RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
     steps:
     # build server api
     - uses: actions/checkout@v1
@@ -20,8 +22,6 @@ jobs:
         cd server
         gradle clean package
         tar -zcvf ${RELEASE_NAME}.gz build/libs/* 
-      env:
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}  
     # build client static files
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -36,16 +36,14 @@ jobs:
         tar -zcvf ${RELEASE_NAME}.tar.gz ./dist/*
       env:
         CI: true
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
     # release
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          client/dist/$RELEASE_NAME.tar.gz
-          server/build/libs/$RELEASE_NAME.*ar
-          server/$RELEASE_NAME.gz
+          client/dist/${{ RELEASE_NAME }}.tar.gz
+          server/build/libs/${{ RELEASE_NAME }}.*ar
+          server/${{ RELEASE_NAME }}.gz
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
