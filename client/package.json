@@ -12,7 +12,7 @@
     "server": "node webpack/server",
     "analyz": "NODE_ENV=production yarn_config_report=true yarn run build"
   },
-  "repository": "https://github.com/ourfor/template",
+  "repository": "git://github.com/ourfor/template.git",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

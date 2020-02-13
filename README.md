@@ -4,6 +4,10 @@
 
 
 ## 持续集成
+![](https://github.com/ourfor/template/workflows/Java%20CI/badge.svg)
+![](https://github.com/ourfor/template/workflows/Yarn%20CI/badge.svg)
+![](https://github.com/ourfor/template/workflows/GitHub%20Pages/badge.svg)
+![](https://github.com/ourfor/template/workflows/Release/badge.svg)
 
 - 使用Github提供的Action来自动化编译构建
 

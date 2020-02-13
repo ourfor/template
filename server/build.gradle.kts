@@ -17,6 +17,7 @@ plugins {
 
 	java
 	war
+	`maven-publish`
     application
 	kotlin("jvm") version kotlinVersion
 	kotlin("plugin.allopen") version kotlinVersion
@@ -53,7 +54,23 @@ buildscript {
 	}
 }
 
-
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ourfor/template")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("PASSWORD")
+            }
+        }
+    }
+    publications {
+        register("gpr") {
+            from(components["java"])
+        }
+    }
+}
 
 the<DependencyManagementExtension>().apply {
 	imports {
