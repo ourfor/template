@@ -4,6 +4,8 @@ on: [push]
 
 jobs:
   build:
+    env: 
+        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
 
     runs-on: ubuntu-latest
 
@@ -22,7 +24,5 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: $RELEASE_NAME
-        path: server/$RELEASE_NAME.jar
-      env: 
-        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
+        name: ${{ env.RELEASE_NAME }}
+        path: server
