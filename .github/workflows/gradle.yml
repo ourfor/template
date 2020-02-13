@@ -22,7 +22,7 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: ${{ RELEASE_NAME }}
-        path: server/${{ RELEASE_NAME }}.jar
+        name: $RELEASE_NAME
+        path: server/$RELEASE_NAME.jar
       env: 
         RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
