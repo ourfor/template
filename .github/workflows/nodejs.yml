@@ -31,5 +31,5 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: ${{ RELEASE_NAME }}
-        path: "client/${{ RELEASE_NAME }}.tar.gz"
+        name: ${{ env.RELEASE_NAME }}
+        path: client/${{ env.RELEASE_NAME }}.tar.gz"
