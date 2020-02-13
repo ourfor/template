@@ -66,9 +66,11 @@ publishing {
         }
     }
     publications {
-        register("gpr") {
-            from(components["java"])
-        }
+		create<MavenPublication>("default") {
+            artifact(tasks["bootJar"])
+			artifactId = tasks.jar.get().archiveBaseName.get()
+			groupId = "top.ourfor.jvm"
+		}
     }
 }
 
@@ -154,7 +156,6 @@ open class GreetingTask : DefaultTask() {
 val taskPackage by tasks.register<GreetingTask>("package") {
 	dependsOn("bootJar")
 	dependsOn("bootWar")
-
 }
 
 

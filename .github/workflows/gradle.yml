@@ -16,7 +16,13 @@ jobs:
     - name: Build with Gradle
       run: |
         cd server && gradle clean package
-        gradle publish
         echo -e $BASE_REF
-    env: 
-      BASE_REF: ${{ github.base_ref }}
+      env: 
+        BASE_REF: ${{ github.base_ref }}
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: ${{ RELEASE_NAME }}
+        path: server/${{ RELEASE_NAME }}.jar
+      env: 
+        RELEASE_NAME: ${{ secrets.RELEASE_NAME }}
