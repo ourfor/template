@@ -20,13 +20,14 @@ jobs:
     - name: Yarn Build
       run: |
         rm -rf .git
+        cd client
         yarn 
         yarn build
       env:
         CI: true
     - name: Deploy to GitHub Pages
       run: |
-        cd dist
+        cd client/dist
         cp index.html 404.html
         echo -e "$DOMAIN" > CNAME
         git init
@@ -39,8 +40,8 @@ jobs:
         git commit -m "update gh-pages"
         git push -f origin gh-pages
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        USER_EMAIL: support@ourfor.top 
-        USER_NAME: catalina 
+        ACCESS_TOKEN: ${{ github.token }}
+        USER_EMAIL: ourfor@qq.com
+        USER_NAME: ourfor 
         DOMAIN: ${{ secrets.DOMAIN }}
         REPO: ${{ secrets.REPO }}

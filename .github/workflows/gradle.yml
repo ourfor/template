@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v1
@@ -14,5 +14,8 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: 
+      run: |
         cd server && gradle clean package
+        echo -e $BASE_REF
+    env: 
+      BASE_REF: ${{ github.base_ref }}
