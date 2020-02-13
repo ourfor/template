@@ -43,8 +43,7 @@ jobs:
       with:
         files: |
           client/${{ env.RELEASE_NAME }}.tar.gz
-          server/build/libs/${{ env.RELEASE_NAME }}.jar
-          server/build/libs/${{ env.RELEASE_NAME }}.war
+          server/build/libs/**
           server/${{ env.RELEASE_NAME }}.gz
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
