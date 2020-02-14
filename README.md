@@ -13,10 +13,8 @@
 
 在此之前你需要设置几个变量:
 ```
-ACCESS_TOKEN: 访问GitHub仓库的Token,具备相应的权限
 DOMAIN: 前端页面的域名, 当然也可以是文档的域名, 需要你做好相应的解析
-RELEASE_NAME: 构成产品的名称
-REPO: 当前操作仓库的URL(eg: github.com/ourfor/template)
+RELEASE_NAME: 命名构建产物
 ```
 
 ## Copyright
