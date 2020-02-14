@@ -49,4 +49,4 @@ jobs:
           server/build/libs/${{ env.RELEASE_NAME }}.*ar
           server/${{ env.RELEASE_NAME }}.gz
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}

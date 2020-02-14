@@ -33,7 +33,7 @@ jobs:
         git init
         git checkout -b gh-pages
         echo -e $ACCESS_TOKEN
-        git remote add origin https://ourfor:$ACCESS_TOKEN@$REPO
+        git remote add origin https://ourfor:$ACCESS_TOKEN@github.com/$REPO
         git config --global user.email "$USER_EMAIL"
         git config --global user.name "$USER_NAME"
         git add . 
@@ -44,4 +44,4 @@ jobs:
         USER_EMAIL: ourfor@qq.com
         USER_NAME: ourfor 
         DOMAIN: ${{ secrets.DOMAIN }}
-        REPO: ${{ secrets.REPO }}
+        REPO: ${{ github.repository }}
