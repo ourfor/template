@@ -22,7 +22,7 @@ module.exports = {
 			warn: ['console','warn'],
 			info: ['console','info'],
 			$conf: path.resolve('./config.yml'),
-			pkg: path.resolve('./package.json'),
+			$pkg: path.resolve('./package.json'),
         }),
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({

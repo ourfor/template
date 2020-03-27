@@ -22,7 +22,7 @@ module.exports = {
 			warn: ['console','warn'],
 			info: ['console','info'],
 			$conf: path.resolve('./config.yml'),
-			pkg: path.resolve('./package.json'),
+			$pkg: path.resolve('./package.json'),
         }),
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
@@ -55,7 +55,8 @@ module.exports = {
 		compress: true,
 		port: 80,
 		hot: true,
-		host: '0.0.0.0'
+		host: '0.0.0.0',
+		public: 'demo.ourfor.top'
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],

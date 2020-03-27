@@ -1,20 +1,14 @@
 import { render } from 'react-dom'
 
-// lazy load route page
-import PageLogin from './pages/login/login'
-
-
 // import style sheet
 import './sass/main.scss'
 
-log('load successful')
+// global state and router
+import { db } from './data/data'
+import { Root } from './router/router'
 
-function App() {
-    return (
-        <div style={{height: '100%'}}>
-            <PageLogin />
-        </div>
-    )
-}
+const App = () => (
+    <Root store={db} />
+)
 
 render(<App />, document.getElementById('main'))
